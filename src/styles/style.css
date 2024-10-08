@@ -1,0 +1,17 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+:root {
+    --primary-color: #85275C;
+}
+
+[alt='titulo'] {
+    width: 15rem;
+}
+
+.bg-primary-person {
+    background-color: var(--primary-color);
+}
+
+.text-primary-person {
+    color: var(--primary-color);
+}
