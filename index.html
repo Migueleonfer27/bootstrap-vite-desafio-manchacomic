@@ -4,18 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>ManchaCómic</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-primary-person">
       <div class="container-fluid">
-        <a class="navbar-brand ps-5" href="inicio">
-          <img src="/src/assets/img/icono.png" alt="titulo">
+        <a class="navbar-brand" href="#">
+          <img src="/src/assets/img/icon.png" alt="title">
         </a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end pe-5" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link text-light" href="#">Inicio</a>
@@ -30,6 +30,45 @@
         </div>
       </div>
     </nav>
+
+    <div class="container p-3 p-md-5">
+      <h2 class="text-center text-primary-person">Registro de actividades</h2>
+      <form id="form">
+        <fieldset>
+          <legend class="visually-hidden">Información del Registro</legend>
+          <div class="mb-3">
+            <label for="activitie-date" class="form-label">Fecha</label>
+            <input id="activitie-date" type="datetime-local" class="form-control" required aria-required="true">
+          </div>
+          <div class="mb-3">
+            <label for="activitie-pick" class="form-label">Actividades</label>
+            <select id="activitie-pick" class="form-select" required aria-required="true">
+              <option value="" disabled selected>Seleccionar actividad</option>
+              <option value="talks">Charlas</option>
+              <option value="workshops">Talleres</option>
+              <option value="table-games">Juegos de mesa</option>
+              <option value="wargames">Wargames</option>
+              <option value="rol-scape-room">Rol/Escape room</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="ubication-pick" class="form-label">Ubicación</label>
+            <select id="ubication-pick" class="form-select" required aria-required="true">
+              <option value="" disabled selected>Seleccionar ubicación</option>
+              <option value="gardens">Jardines del Prado</option>
+              <option value="casino">Antiguo Casino</option>
+              <option value="cave">Cueva</option>
+            </select>
+          </div>
+          <div class="d-flex flex-column flex-md-row justify-content-center">
+            <button id="submitBtn" type="submit" class="btn btn-dark w-100 w-md-25 bg-primary-person btn-hov-person btn-act-person m-2">Registrar</button>
+            <button id="resetBtn" type="reset" class="btn btn-dark w-100 w-md-25 bg-primary-person btn-hov-person btn-act-person m-2">Restaurar</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- Asegúrate de incluir el JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

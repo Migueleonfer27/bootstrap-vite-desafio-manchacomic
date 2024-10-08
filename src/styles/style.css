@@ -2,16 +2,29 @@
 
 :root {
     --primary-color: #85275C;
+    --secondary-color: #000000;
+    --ternary-color: #FFFFFF;
 }
 
-[alt='titulo'] {
+[alt='title'] {
     width: 15rem;
 }
 
 .bg-primary-person {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
 }
 
 .text-primary-person {
     color: var(--primary-color);
+}
+
+.btn-hov-person:hover {
+    transition: 0.3s;
+    background-color: var(--secondary-color) !important;
+}
+
+.btn-act-person:active {
+    transition: 0s !important;
+    background-color: var(--ternary-color) !important;
+    color: var(--primary-color) !important;
 }
