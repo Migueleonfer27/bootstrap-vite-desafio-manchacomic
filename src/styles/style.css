@@ -15,7 +15,7 @@
 }
 
 .text-primary-person {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
 
 .btn-hov-person:hover {
