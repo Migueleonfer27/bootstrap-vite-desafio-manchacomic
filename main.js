@@ -7,4 +7,4 @@ addInputValidation('#activitie-pick', validateType);
 addInputValidation('#ubication-pick', validateLocation);
 addInputValidation('#activitie-date', validateDate);
 document.querySelector('#form').addEventListener('submit', submitFormActivitie);
-document.querySelector('#reset-button').addEventListener('click', deleteInfoForm);
+document.querySelector('#resetBtn').addEventListener('click', deleteInfoForm);

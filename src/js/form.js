@@ -82,6 +82,12 @@ export const addInputValidation = (selector, validationFunction) => {
     }
 };
 
+export const saveToLocalStorage = (activitie) => {
+    const activities = JSON.parse(localStorage.getItem('activities')) || [];
+    activities.push(activitie);
+    localStorage.setItem('activities', JSON.stringify(activities));
+};
+
 export const submitFormActivitie = (event) => {
     event.preventDefault();
     if (validateType() && validateLocation() && validateDate()) {
@@ -90,14 +96,18 @@ export const submitFormActivitie = (event) => {
         const datetimeValue = document.querySelector('#activitie-date').value;
         const [day, hour] = datetimeValue.split('T');
         const newActivitie = new Activitie(type, location, day, hour);
-        console.log('Actividad creada:', newActivitie);
+        document.querySelector('#formSuccess').classList.remove('d-none');
+        saveToLocalStorage(newActivitie);
     } else {
-        console.log('Por favor, corrige los errores en el formulario.');
+        document.querySelector('#formAlert').classList.remove('d-none');
     }
 };
 
 export const deleteInfoForm = () => {
     const inputs = document.querySelectorAll('#form input, #form select');
+
+    document.querySelector('#formAlert').classList.add('d-none');
+    document.querySelector('#formSuccess').classList.add('d-none');
 
     inputs.forEach(input => {
         input.classList.remove('is-valid', 'is-invalid');
