@@ -1,4 +1,4 @@
-import { Activitie } from "./activitie";
+import { getFromLocalStorage } from './localStorage';
 
 export const insertActivitie = (activities) => {
     activities.forEach(activitie => {
@@ -22,21 +22,22 @@ export const insertActivitie = (activities) => {
                         if (day.classList.contains(activitie._day)) {
                             const button = document.createElement('button');
                             button.setAttribute('type', 'button');
-                            button.classList.add('btn', 'bg-primary-person', 'text-light', 'my-1', 'd-block');
+                            button.classList.add('btn', 'bg-primary-person', 'text-light', 'my-1', 'd-block', 'w-100');
                             button.setAttribute('data-bs-toggle', 'modal');
                             button.setAttribute('data-bs-target', `#modal-${activitie._id}`);
-                            button.textContent = 'Ver actividad';
-                            button.draggable = true
+                            button.textContent = `${activitie._type}`;
+                            button.draggable = true;
 
+                            // Asignar ID al botón después de crearlo
+                            button.setAttribute('id', `btn-${activitie._id}`);
+
+                            // Crear el modal
                             const modal = document.createElement('div');
                             modal.classList.add('modal', 'fade');
                             modal.id = `modal-${activitie._id}`;
-                            modal.setAttribute('tabindex', 
-                                                '-1',
-                                                'aria-labelledby', 
-                                                `modalLabel-${activitie._id}`,
-                                                'aria-hidden', 
-                                                'true');
+                            modal.setAttribute('tabindex', '-1');
+                            modal.setAttribute('aria-labelledby', `modalLabel-${activitie._id}`);
+                            modal.setAttribute('aria-hidden', 'true');
                             modal.innerHTML = `
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -50,11 +51,21 @@ export const insertActivitie = (activities) => {
                                             <p>Día: ${activitie._day}</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn bg-primary-person text-light" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn bg-primary-person text-light" id="delete-${activitie._id}">Eliminar</button>
                                         </div>
                                     </div>
                                 </div>
                             `;
+                            const deleteButton = modal.querySelector(`#delete-${activitie._id}`);
+                            deleteButton.addEventListener('click', () => {
+                                deleteActivitie(activitie._id);
+                                deleteButton.textContent = 'Actividad eliminada correctamente';
+                                deleteButton.classList.add('bg-success');
+                                const modalElement = new bootstrap.Modal(modal);
+                                modalElement.hide();
+                                document.body.removeChild(modal);
+                                document.querySelector(`#btn-${activitie._id}`).remove();
+                            });
                             day.appendChild(button);
                             document.body.appendChild(modal);
                         }
@@ -65,7 +76,16 @@ export const insertActivitie = (activities) => {
     });
 };
 
-export const getFromLocalStorage = () => {
-    const activities = JSON.parse(localStorage.getItem('activities')) || [];
-    return activities;
+const deleteActivitie = (id) => {
+    const activities = getFromLocalStorage();
+    const updatedActivities = activities.filter(activity => activity._id !== id);
+    localStorage.setItem('activities', JSON.stringify(updatedActivities));
+    updateUIAfterDeletion(id);
+};
+
+const updateUIAfterDeletion = (id) => {
+    const button = document.querySelector(`#btn-${id}`);
+    if (button) {
+        button.remove();
+    }
 };

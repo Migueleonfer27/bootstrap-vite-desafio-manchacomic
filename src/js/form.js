@@ -1,4 +1,5 @@
 import { Activitie } from './activitie';
+import { saveToLocalStorage, getFromLocalStorage } from './localStorage';
 
 const changeStyle = (element, isValid) => {
     if (isValid) {
@@ -58,7 +59,7 @@ export const validateDate = () => {
                 valid = false;
             }
         } else if (day === '2025-10-04' || day === '2025-10-05') {
-            if ((parseInt(hour, 10) >= 10 && parseInt(hour, 10) <= 22) && parseInt(minute, 10) === 0) {
+            if ((parseInt(hour, 10) >= 10 && parseInt(hour, 10) <= 21) && parseInt(minute, 10) === 0) {
                 valid = true;
             } else {
                 valid = false;
@@ -82,23 +83,16 @@ export const addInputValidation = (selector, validationFunction) => {
     }
 };
 
-export const saveToLocalStorage = (activitie) => {
-    const activities = JSON.parse(localStorage.getItem('activities')) || [];
-    activities.push(activitie);
-    localStorage.setItem('activities', JSON.stringify(activities));
-};
-
 export const submitFormActivitie = (event) => {
     event.preventDefault();
-
-    // Validar los campos del formulario
     if (validateType() && validateLocation() && validateDate()) {
+        const activities = getFromLocalStorage();
+        const id = activities.length === 0 ? 1 : activities[activities.length - 1]._id + 1;
         const type = document.querySelector('#activitie-pick').value;
         const location = document.querySelector('#ubication-pick').value;
         const datetimeValue = document.querySelector('#activitie-date').value;
         const [day, hour] = datetimeValue.split('T');
-        const newActivitie = new Activitie(type, location, day, hour);
-        const activities = JSON.parse(localStorage.getItem('activities')) || [];
+        const newActivitie = new Activitie(id, type, location, day, hour);
         if (thereIsEspace(activities, newActivitie)) {
             saveToLocalStorage(newActivitie);
             document.querySelector('#formSuccess').classList.remove('d-none');
@@ -135,9 +129,9 @@ export const deleteInfoForm = () => {
 
 export const thereIsEspace = (activities, newActivitie) => {
     const activitiesForSameTime = activities.filter(activity => {
-        return activity._day === newActivitie._day && 
-        activity._hour === newActivitie._hour && 
-        activity._location === newActivitie._location;
+        return activity._day === newActivitie._day &&
+            activity._hour === newActivitie._hour &&
+            activity._location === newActivitie._location;
     });
     const limits = {
         gardens: 5,

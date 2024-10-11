@@ -1,40 +1,49 @@
 export class Activitie {
-    constructor(type, location, day, hour) {
-        this.type = type;
-        this.location = location;
-        this.day = day;
-        this.hour = hour;
+    constructor(id, type, location, day, hour) {
+        this._id = id;
+        this._type = type;
+        this._location = location;
+        this._day = day;
+        this._hour = hour;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set type(newId) {
+        this._type = newId;
     }
 
     get type() {
         return this._type;
     }
 
-    set type(nuevoType) {
-        this._type = nuevoType;
+    set type(newType) {
+        this._type = newType;
     }
 
     get location() {
         return this._location;
     }
 
-    set location(nuevaLocation) {
-        this._location = nuevaLocation;
+    set location(newLocation) {
+        this._location = newLocation;
     }
 
     get day() {
         return this._day;
     }
 
-    set day(nuevoDay) {
-        this._day = nuevoDay;
+    set day(newDay) {
+        this._day = newDay;
     }
 
     get hour() {
         return this._hour;
     }
 
-    set hour(nuevaHour) {
-        this._hour = nuevaHour;
+    set hour(newHour) {
+        this._hour = newHour;
     }
 }
