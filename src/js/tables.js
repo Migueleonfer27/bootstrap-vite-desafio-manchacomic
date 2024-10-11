@@ -65,7 +65,6 @@ export const insertActivitie = (activities) => {
     });
 };
 
-
 export const getFromLocalStorage = () => {
     const activities = JSON.parse(localStorage.getItem('activities')) || [];
     return activities;

@@ -90,16 +90,27 @@ export const saveToLocalStorage = (activitie) => {
 
 export const submitFormActivitie = (event) => {
     event.preventDefault();
+
+    // Validar los campos del formulario
     if (validateType() && validateLocation() && validateDate()) {
         const type = document.querySelector('#activitie-pick').value;
         const location = document.querySelector('#ubication-pick').value;
         const datetimeValue = document.querySelector('#activitie-date').value;
         const [day, hour] = datetimeValue.split('T');
         const newActivitie = new Activitie(type, location, day, hour);
-        document.querySelector('#formSuccess').classList.remove('d-none');
-        saveToLocalStorage(newActivitie);
+        const activities = JSON.parse(localStorage.getItem('activities')) || [];
+        if (thereIsEspace(activities, newActivitie)) {
+            saveToLocalStorage(newActivitie);
+            document.querySelector('#formSuccess').classList.remove('d-none');
+            document.querySelector('#formAlert').classList.add('d-none');
+        } else {
+            document.querySelector('#formAlert').classList.remove('d-none');
+            document.querySelector('#formSuccess').classList.add('d-none');
+            document.querySelector('#formAlert').textContent = 'No hay espacio disponible para esta actividad.';
+        }
     } else {
         document.querySelector('#formAlert').classList.remove('d-none');
+        document.querySelector('#formSuccess').classList.add('d-none');
     }
 };
 
@@ -120,4 +131,20 @@ export const deleteInfoForm = () => {
             input.selectedIndex = 0;
         }
     });
+};
+
+export const thereIsEspace = (activities, newActivitie) => {
+    const activitiesForSameTime = activities.filter(activity => {
+        return activity._day === newActivitie._day && 
+        activity._hour === newActivitie._hour && 
+        activity._location === newActivitie._location;
+    });
+    const limits = {
+        gardens: 5,
+        casino: 10,
+        cave: 2
+    };
+    const isSpaceAvailable = activitiesForSameTime.length < limits[newActivitie.location];
+
+    return isSpaceAvailable;
 };
