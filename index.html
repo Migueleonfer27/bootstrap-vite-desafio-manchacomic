@@ -9,9 +9,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-primary-person">
+  <nav id="navbar" class="navbar navbar-expand-lg bg-primary-person">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.html">
         <img src="/src/assets/img/icon.png" alt="title">
       </a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
@@ -22,13 +22,13 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Inicio</a>
+            <a class="nav-link text-light" href="#navbar">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Formulario</a>
+            <a class="nav-link text-light" href="#title-form">Formulario</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Actividades</a>
+            <a class="nav-link text-light" href="#title-activities">Actividades</a>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
   </nav>
 
   <div class="container p-3 p-md-5">
-    <h2 class="text-center text-primary-person">Registro de actividades</h2>
+    <h2 id="title-form" class="text-center text-primary-person">Registro de actividades</h2>
     <form id="form">
       <fieldset>
         <legend class="visually-hidden">Información del Registro</legend>
@@ -80,7 +80,7 @@
       </fieldset>
     </form>
   </div>
-  <h2 class="text-center text-primary-person">Calendario Actividades</h2>
+  <h2 id="title-activities" class="text-center text-primary-person">Calendario Actividades</h2>
   <div class="container p-3 p-md-4">
     <table id="garden" class="table">
       <thead>

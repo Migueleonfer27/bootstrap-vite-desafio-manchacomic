@@ -1,5 +1,6 @@
 import { Activitie } from './activitie';
 import { saveToLocalStorage, getFromLocalStorage } from './localStorage';
+import { insertActivitie } from './tables';
 
 const changeStyle = (element, isValid) => {
     if (isValid) {
@@ -90,6 +91,7 @@ export const addInputValidation = (selector, validationFunction) => {
 
 export const submitFormActivitie = (event) => {
     event.preventDefault();
+
     if (validateType() && validateLocation() && validateDate()) {
         const activities = getFromLocalStorage();
         const id = activities.length === 0 ? 1 : activities[activities.length - 1]._id + 1;
@@ -98,10 +100,12 @@ export const submitFormActivitie = (event) => {
         const datetimeValue = document.querySelector('#activitie-date').value;
         const [day, hour] = datetimeValue.split('T');
         const newActivitie = new Activitie(id, type, location, day, hour);
+
         if (thereIsEspace(activities, newActivitie)) {
             saveToLocalStorage(newActivitie);
             document.querySelector('#formSuccess').classList.remove('d-none');
             document.querySelector('#formAlert').classList.add('d-none');
+            insertActivitie(getFromLocalStorage());
         } else {
             document.querySelector('#formAlert').classList.remove('d-none');
             document.querySelector('#formSuccess').classList.add('d-none');
