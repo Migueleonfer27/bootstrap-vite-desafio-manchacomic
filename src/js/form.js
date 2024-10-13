@@ -14,12 +14,14 @@ const changeStyle = (element, isValid) => {
 export const validateType = () => {
     const type = document.querySelector('#activitie-pick');
     const location = document.querySelector('#ubication-pick');
-    let valid = false;
+    let valid = true;
 
-    if (location.value === 'gardens') {
-        valid = type.value === 'table-games';
-    } else {
-        valid = type.value !== 'table-games';
+    if (location.value) {
+        if (location.value === 'gardens') {
+            valid = type.value === 'table-games';
+        } else {
+            valid = type.value !== 'table-games';
+        }
     }
 
     changeStyle(type, valid);
@@ -30,18 +32,21 @@ export const validateType = () => {
 export const validateLocation = () => {
     const location = document.querySelector('#ubication-pick');
     const type = document.querySelector('#activitie-pick');
-    let valid = false;
+    let valid = true;
 
-    if (type.value === 'table-games') {
-        valid = location.value === 'gardens';
-    } else {
-        valid = location.value !== 'gardens' && location.value !== '';
+    if (type.value) {
+        if (type.value === 'table-games') {
+            valid = location.value === 'gardens';
+        } else {
+            valid = location.value !== 'gardens';
+        }
     }
 
     changeStyle(location, valid);
 
     return valid;
 };
+
 
 export const validateDate = () => {
     const datetimeInput = document.querySelector('#activitie-date');

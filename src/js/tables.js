@@ -28,10 +28,8 @@ export const insertActivitie = (activities) => {
                             button.textContent = `${activitie._type}`;
                             button.draggable = true;
 
-                            // Asignar ID al botón después de crearlo
                             button.setAttribute('id', `btn-${activitie._id}`);
 
-                            // Crear el modal
                             const modal = document.createElement('div');
                             modal.classList.add('modal', 'fade');
                             modal.id = `modal-${activitie._id}`;
