@@ -1,292 +1,348 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ManchaCómic</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-primary-person">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="/src/assets/img/icon.png" alt="title">
-        </a>
-        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Formulario</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Actividades</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
-    <div class="container p-3 p-md-5">
-      <h2 class="text-center text-primary-person">Registro de actividades</h2>
-      <form id="form">
-        <fieldset>
-          <legend class="visually-hidden">Información del Registro</legend>
-          <div class="mb-3">
-            <label for="activitie-date" class="form-label">Fecha</label>
-            <input id="activitie-date" type="datetime-local" class="form-control" required aria-required="true" min="2025-10-03T17:00" max="2025-10-05T23:00">
-          </div>
-          <div class="mb-3">
-            <label for="activitie-pick" class="form-label">Actividades</label>
-            <select id="activitie-pick" class="form-select" required aria-required="true">
-              <option value="" disabled selected>Seleccionar actividad</option>
-              <option value="talks">Charlas</option>
-              <option value="workshops">Talleres</option>
-              <option value="table-games">Juegos de mesa</option>
-              <option value="wargames">Wargames</option>
-              <option value="rol-scape-room">Rol/Escape room</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="ubication-pick" class="form-label">Ubicación</label>
-            <select id="ubication-pick" class="form-select" required aria-required="true">
-              <option value="" disabled selected>Seleccionar ubicación</option>
-              <option value="gardens">Jardines del Prado</option>
-              <option value="casino">Antiguo Casino</option>
-              <option value="cave">Cueva</option>
-            </select>
-          </div>
-          <div class="d-flex flex-column flex-md-colum justify-content-center align-items-center">
-            <button id="submitBtn" type="submit" class="btn btn-dark w-50 w-md-25 bg-primary-person btn-hov-person btn-act-person mb-2">Registrar</button>
-            <button id="resetBtn" type="reset" class="btn btn-dark w-50 w-md-25 bg-primary-person btn-hov-person btn-act-person mb-2">Restaurar</button>
-          </div>
-        </fieldset>
-      </form>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ManchaCómic</title>
+</head>
+
+<body>
+  <nav id="navbar" class="navbar navbar-expand-lg bg-primary-person">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="/src/assets/img/icon.png" alt="title">
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#navbar">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#title-form">Formulario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#title-activities">Actividades</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <h2 class="text-center text-primary-person">Calendario Actividades</h2>
-   <div class="container p-3 p-md-4">
-     <table class="table">
+  </nav>
+
+  <div class="container p-3 p-md-5">
+    <h2 id="title-form" class="text-center text-primary-person">Registro de actividades</h2>
+    <form id="form">
+      <fieldset>
+        <legend class="visually-hidden">Información del Registro</legend>
+        <div class="mb-3">
+          <label for="activitie-date" class="form-label">Fecha</label>
+          <input id="activitie-date" type="datetime-local" class="form-control" required aria-required="true"
+            min="2025-10-03T17:00" max="2025-10-05T23:00">
+        </div>
+        <div class="mb-3">
+          <label for="activitie-pick" class="form-label">Actividades</label>
+          <select id="activitie-pick" class="form-select" required aria-required="true">
+            <option value="" disabled selected>Seleccionar actividad</option>
+            <option value="talks">Charlas</option>
+            <option value="workshops">Talleres</option>
+            <option value="table-games">Juegos de mesa</option>
+            <option value="wargames">Wargames</option>
+            <option value="rol-scape-room">Rol/Escape room</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="ubication-pick" class="form-label">Ubicación</label>
+          <select id="ubication-pick" class="form-select" required aria-required="true">
+            <option value="" disabled selected>Seleccionar ubicación</option>
+            <option value="gardens">Jardines del Prado</option>
+            <option value="casino">Antiguo Casino</option>
+            <option value="cave">Cueva</option>
+          </select>
+        </div>
+        <div class="d-flex flex-column flex-md-colum justify-content-center align-items-center">
+          <button id="submitBtn" type="submit"
+            class="btn btn-dark w-50 w-md-25 bg-primary-person btn-hov-person btn-act-person mb-2">Registrar</button>
+          <button id="resetBtn" type="reset"
+            class="btn btn-dark w-50 w-md-25 bg-primary-person btn-hov-person btn-act-person mb-2">Restaurar</button>
+        </div>
+        <div id="formAlert" class="alert alert-danger text-center mt-3 d-none" role="alert">
+          ¡El formulario tiene errores! Por favor, revisa los campos.
+        </div>
+        <div id="formSuccess" class="alert alert-success text-center mt-3 d-none" role="alert">
+          Actividad introducida correctamente.
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <h2 id="title-activities" class="text-center text-primary-person">Calendario Actividades</h2>
+  <div class="container p-3 p-md-4">
+    <table id="garden" class="table">
       <thead>
         <tr>
           <th class="col text-primary-person fs-4">Jardines</th>
-          <th class="col text-primary-person fs-4 text-center">Viernes</th>
-          <th class="col text-primary-person fs-4 text-center">Sábado</th>
-          <th class="col text-primary-person fs-4 text-center">Domingo</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Viernes</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Sábado</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Domingo</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row" class="text-primary-person">17:00-18:00</th>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr class="10:00">
+          <th scope="row" class="text-primary-person align-middle">10:00-11:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
         </tr>
-        <tr>
-          <th scope="row" class="text-primary-person">18:00-19:00</th>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr class="11:00">
+          <th scope="row" class="text-primary-person align-middle">11:00-12:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
         </tr>
-        <tr>
-          <th scope="row" class="text-primary-person">19:00-20:00</th>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr class="12:00">
+          <th scope="row" class="text-primary-person align-middle">12:00-13:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
         </tr>
-        <tr>
-          <th scope="row" class="text-primary-person">20:00-21:00</th>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr class="13:00">
+          <th scope="row" class="text-primary-person align-middle">13:00-14:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
         </tr>
-        <tr>
-          <th scope="row" class="text-primary-person">21:00-22:00</th>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr class="14:00">
+          <th scope="row" class="text-primary-person align-middle">14:00-15:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="15:00">
+          <th scope="row" class="text-primary-person align-middle">15:00-16:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="16:00">
+          <th scope="row" class="text-primary-person align-middle">16:00-17:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="17:00">
+          <th scope="row" class="text-primary-person align-middle">17:00-18:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="18:00">
+          <th scope="row" class="text-primary-person align-middle">18:00-19:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="19:00">
+          <th scope="row" class="text-primary-person align-middle">19:00-20:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="20:00">
+          <th scope="row" class="text-primary-person align-middle">20:00-21:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="21:00">
+          <th scope="row" class="text-primary-person align-middle">21:00-22:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
         </tr>
       </tbody>
     </table>
-   </div>
-   <div class="container p-3 p-md-4">
-    <table class="table">
-     <thead>
-       <tr>
-         <th class="col text-primary-person fs-4">Casino</th>
-         <th class="col text-primary-person fs-4 text-center">Viernes</th>
-         <th class="col text-primary-person fs-4 text-center">Sábado</th>
-         <th class="col text-primary-person fs-4 text-center">Domingo</th>
-       </tr>
-     </thead>
-     <tbody>
-      <tr>
-        <th scope="row" class="text-primary-person">10:00-11:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">11:00-12:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">12:00-13:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">13:00-14:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">14:00-15:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">15:00-16:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">16:00-17:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">17:00-18:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">18:00-19:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">19:00-20:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">20:00-21:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">21:00-22:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-     </tbody>
-   </table>
   </div>
   <div class="container p-3 p-md-4">
-    <table class="table">
-     <thead>
-       <tr>
-         <th class="col text-primary-person fs-4">Cueva</th>
-         <th class="col text-primary-person fs-4 text-center">Viernes</th>
-         <th class="col text-primary-person fs-4 text-center">Sábado</th>
-         <th class="col text-primary-person fs-4 text-center">Domingo</th>
-       </tr>
-     </thead>
-     <tbody>
-      <tr>
-        <th scope="row" class="text-primary-person">10:00-11:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">11:00-12:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">12:00-13:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">13:00-14:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">14:00-15:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">15:00-16:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row" class="text-primary-person">16:00-17:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">17:00-18:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">18:00-19:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">19:00-20:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">20:00-21:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-       <tr>
-         <th scope="row" class="text-primary-person">21:00-22:00</th>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-     </tbody>
-   </table>
+    <table id="casino" class="table">
+      <thead>
+        <tr>
+          <th class="col text-primary-person fs-4">Casino</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Viernes</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Sábado</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Domingo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="10:00">
+          <th scope="row" class="text-primary-person align-middle">10:00-11:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="11:00">
+          <th scope="row" class="text-primary-person align-middle">11:00-12:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="12:00">
+          <th scope="row" class="text-primary-person align-middle">12:00-13:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="13:00">
+          <th scope="row" class="text-primary-person align-middle">13:00-14:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="14:00">
+          <th scope="row" class="text-primary-person align-middle">14:00-15:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="15:00">
+          <th scope="row" class="text-primary-person align-middle">15:00-16:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="16:00">
+          <th scope="row" class="text-primary-person align-middle">16:00-17:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="17:00">
+          <th scope="row" class="text-primary-person align-middle">17:00-18:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="18:00">
+          <th scope="row" class="text-primary-person align-middle">18:00-19:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="19:00">
+          <th scope="row" class="text-primary-person align-middle">19:00-20:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="20:00">
+          <th scope="row" class="text-primary-person align-middle">20:00-21:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="21:00">
+          <th scope="row" class="text-primary-person align-middle">21:00-22:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <footer class="bg-primary-person p-2 d-flex align-items-center justify-content-center">
+  <div class="container p-3 p-md-4">
+    <table id="cave" class="table">
+      <thead>
+        <tr>
+          <th class="col text-primary-person fs-4">Cueva</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Viernes</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Sábado</th>
+          <th class="col text-primary-person fs-4 text-center w-25">Domingo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="10:00">
+          <th scope="row" class="text-primary-person align-middle">10:00-11:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="11:00">
+          <th scope="row" class="text-primary-person align-middle">11:00-12:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="12:00">
+          <th scope="row" class="text-primary-person align-middle">12:00-13:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="13:00">
+          <th scope="row" class="text-primary-person align-middle">13:00-14:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="14:00">
+          <th scope="row" class="text-primary-person align-middle">14:00-15:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="15:00">
+          <th scope="row" class="text-primary-person align-middle">15:00-16:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="16:00">
+          <th scope="row" class="text-primary-person align-middle">16:00-17:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="17:00">
+          <th scope="row" class="text-primary-person align-middle">17:00-18:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="18:00">
+          <th scope="row" class="text-primary-person align-middle">18:00-19:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="19:00">
+          <th scope="row" class="text-primary-person align-middle">19:00-20:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="20:00">
+          <th scope="row" class="text-primary-person align-middle">20:00-21:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+        <tr class="21:00">
+          <th scope="row" class="text-primary-person align-middle">21:00-22:00</th>
+          <td class="2025-10-03"></td>
+          <td class="2025-10-04"></td>
+          <td class="2025-10-05"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="bg-primary-person p-5 d-flex align-items-center justify-content-center">
     <p class="text-light text-center mb-0">© 2025 ManchaComic, Inc</p>
   </footer>
-    <script type="module" src="./main.js"></script>
-  </body>
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>
