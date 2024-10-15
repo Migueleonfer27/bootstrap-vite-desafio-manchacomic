@@ -23,7 +23,11 @@ export const insertActivitie = (activities) => {
                                 button.setAttribute('type', 'button');
                                 button.classList.add('btn', 'bg-primary-person', 'text-light', 'my-1', 'd-block', 'w-100');
                                 button.setAttribute('data-bs-toggle', 'modal');
-                                button.setAttribute('data-bs-target', `#modal-${activitie._id}`);
+                                if (activitie._id == null) {
+                                    button.setAttribute('data-bs-target', `#modal-${activitie._id + 1}`);
+                                } else {
+                                    button.setAttribute('data-bs-target', `#modal-${activitie._id}`);
+                                }
                                 button.textContent = `${activitie._type}`;
                                 button.draggable = true;
                                 button.setAttribute('id', `btn-${activitie._id}`);
@@ -36,11 +40,11 @@ export const insertActivitie = (activities) => {
                                 modal.innerHTML = `
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div id="modal-header-${activitie._id}" class="modal-header">
                                                 <h5 class="modal-title" id="modalLabel-${activitie._id}">${activitie._type}</h5>
                                                 <button type="button" class="btn-close bg-primary-person" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div id="modalLabel-body-${activitie._id}" class="modal-body">
                                                 <p>Ubicación: ${activitie._location}</p>
                                                 <p>Hora: ${activitie._hour}</p>
                                                 <p>Día: ${activitie._day}</p>
