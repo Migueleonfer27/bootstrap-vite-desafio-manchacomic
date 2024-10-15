@@ -10,7 +10,6 @@ export const getFromLocalStorage = () => {
 
 export const updateToLocalStorage = (updatedActivity) => {
     let activities = JSON.parse(localStorage.getItem('activities')) || [];
-    // Actualiza la actividad existente
     activities = activities.map(activity => activity._id === updatedActivity._id ? updatedActivity : activity);
     localStorage.setItem('activities', JSON.stringify(activities));
 };

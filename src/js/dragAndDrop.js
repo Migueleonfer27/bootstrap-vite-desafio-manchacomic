@@ -38,10 +38,8 @@ export const dragAndDrop = () => {
                     limit = 0; 
             }
 
-            if (currentButtons >= limit) {
-                td.classList.add('bg-danger');
-            } else {
-                td.classList.add('bg-success');
+            if (!td.classList.contains('bg-secondary')) {
+                currentButtons >= limit ? td.classList.add('bg-danger') : td.classList.add('bg-success')
             }
         });
 
@@ -78,6 +76,9 @@ const handleDrop = (activityId, td, button) => {
         switch (tableId) {
             case 'garden':
                 limit = 5;
+                if (newDay == '2025-10-03' && parseInt(newHour) < 17) {
+                    return;
+                }
                 break;
             case 'casino':
                 limit = 10;
@@ -121,11 +122,14 @@ const openModalWithActivity = (activityId) => {
     const activity = activities.find(activity => activity._id === parseInt(activityId));
 
     if (activity) {
-        const modalTitle = document.querySelector(`#modal-header-${activityId}`);
+        const modalHeader = document.querySelector(`#modal-header-${activityId}`);
         const modalBody = document.querySelector(`#modalLabel-body-${activityId}`);
 
-        if (modalTitle && modalBody) {
-            modalTitle.textContent = activity._type;
+        if (modalHeader && modalBody) {
+            modalHeader.innerHTML = `
+                <h5 class="modal-title">${activity._type}</h5>
+                <button type="button" class="btn-close bg-primary-person" data-bs-dismiss="modal" aria-label="Close"></button>
+            `;
             modalBody.innerHTML = `
                 <p>Hora: ${activity._hour}</p>
                 <p>Día: ${activity._day}</p>
@@ -134,3 +138,4 @@ const openModalWithActivity = (activityId) => {
         }
     }
 };
+

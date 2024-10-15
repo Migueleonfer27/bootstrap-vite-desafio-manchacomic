@@ -60,6 +60,10 @@ export const insertActivitie = (activities) => {
                                     deleteActivitie(activitie._id);
                                     deleteButton.textContent = 'Actividad eliminada correctamente';
                                     deleteButton.classList.add('bg-success');
+                                    setInterval(() => {
+                                        deleteButton.textContent = 'Eliminar';
+                                        deleteButton.classList.remove('bg-success');
+                                    }, 1500);
                                     const modalElement = new bootstrap.Modal(modal);
                                     modalElement.hide();
                                     document.body.removeChild(modal);
@@ -89,3 +93,30 @@ const updateUIAfterDeletion = (id) => {
         button.remove();
     }
 };
+
+export const hideTable = () => {
+    const btnGarden = document.querySelector('#btn-garden');
+    const btnCasino = document.querySelector('#btn-casino');
+    const btnCave = document.querySelector('#btn-cave');
+    const tableGarden = document.querySelector('#container-garden');
+    const tableCasino = document.querySelector('#container-casino');
+    const tableCave = document.querySelector('#container-cave');
+
+    btnGarden.addEventListener('click', () => {
+        tableGarden.classList.remove('d-none');
+        tableCasino.classList.add('d-none');
+        tableCave.classList.add('d-none');
+    });
+
+    btnCasino.addEventListener('click', () => {
+        tableGarden.classList.add('d-none');
+        tableCasino.classList.remove('d-none');
+        tableCave.classList.add('d-none');
+    });
+
+    btnCave.addEventListener('click', () => {
+        tableGarden.classList.add('d-none');
+        tableCasino.classList.add('d-none');
+        tableCave.classList.remove('d-none');
+    });
+}
