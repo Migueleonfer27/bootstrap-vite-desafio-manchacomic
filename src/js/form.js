@@ -1,6 +1,7 @@
 import { Activitie } from './activitie';
 import { saveToLocalStorage, getFromLocalStorage } from './localStorage';
 import { insertActivitie } from './tables';
+import { dragAndDrop } from './dragAndDrop';
 
 const changeStyle = (element, isValid) => {
     if (isValid) {
@@ -106,6 +107,7 @@ export const submitFormActivitie = (event) => {
             document.querySelector('#formSuccess').classList.remove('d-none');
             document.querySelector('#formAlert').classList.add('d-none');
             insertActivitie(getFromLocalStorage());
+            dragAndDrop();
         } else {
             document.querySelector('#formAlert').classList.remove('d-none');
             document.querySelector('#formSuccess').classList.add('d-none');

@@ -8,7 +8,13 @@ export const getFromLocalStorage = () => {
     return JSON.parse(localStorage.getItem('activities')) || [];
 };
 
-const deleteActivitie = (id) => {
+export const updateToLocalStorage = (updatedActivity) => {
+    let activities = JSON.parse(localStorage.getItem('activities')) || [];
+    activities = activities.map(activity => activity._id === updatedActivity._id ? updatedActivity : activity);
+    localStorage.setItem('activities', JSON.stringify(activities));
+};
+
+export const deleteActivitie = (id) => {
     getFromLocalStorage().filter(activity => activity._id !== id);
     localStorage.setItem('activities', JSON.stringify(activities));
     removeActivityFromUI(id);

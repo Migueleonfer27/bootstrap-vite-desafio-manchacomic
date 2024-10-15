@@ -23,7 +23,11 @@ export const insertActivitie = (activities) => {
                                 button.setAttribute('type', 'button');
                                 button.classList.add('btn', 'bg-primary-person', 'text-light', 'my-1', 'd-block', 'w-100');
                                 button.setAttribute('data-bs-toggle', 'modal');
-                                button.setAttribute('data-bs-target', `#modal-${activitie._id}`);
+                                if (activitie._id == null) {
+                                    button.setAttribute('data-bs-target', `#modal-${activitie._id + 1}`);
+                                } else {
+                                    button.setAttribute('data-bs-target', `#modal-${activitie._id}`);
+                                }
                                 button.textContent = `${activitie._type}`;
                                 button.draggable = true;
                                 button.setAttribute('id', `btn-${activitie._id}`);
@@ -36,11 +40,11 @@ export const insertActivitie = (activities) => {
                                 modal.innerHTML = `
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div id="modal-header-${activitie._id}" class="modal-header">
                                                 <h5 class="modal-title" id="modalLabel-${activitie._id}">${activitie._type}</h5>
                                                 <button type="button" class="btn-close bg-primary-person" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div id="modalLabel-body-${activitie._id}" class="modal-body">
                                                 <p>Ubicación: ${activitie._location}</p>
                                                 <p>Hora: ${activitie._hour}</p>
                                                 <p>Día: ${activitie._day}</p>
@@ -56,6 +60,10 @@ export const insertActivitie = (activities) => {
                                     deleteActivitie(activitie._id);
                                     deleteButton.textContent = 'Actividad eliminada correctamente';
                                     deleteButton.classList.add('bg-success');
+                                    setInterval(() => {
+                                        deleteButton.textContent = 'Eliminar';
+                                        deleteButton.classList.remove('bg-success');
+                                    }, 1500);
                                     const modalElement = new bootstrap.Modal(modal);
                                     modalElement.hide();
                                     document.body.removeChild(modal);
@@ -85,3 +93,30 @@ const updateUIAfterDeletion = (id) => {
         button.remove();
     }
 };
+
+export const hideTable = () => {
+    const btnGarden = document.querySelector('#btn-garden');
+    const btnCasino = document.querySelector('#btn-casino');
+    const btnCave = document.querySelector('#btn-cave');
+    const tableGarden = document.querySelector('#container-garden');
+    const tableCasino = document.querySelector('#container-casino');
+    const tableCave = document.querySelector('#container-cave');
+
+    btnGarden.addEventListener('click', () => {
+        tableGarden.classList.remove('d-none');
+        tableCasino.classList.add('d-none');
+        tableCave.classList.add('d-none');
+    });
+
+    btnCasino.addEventListener('click', () => {
+        tableGarden.classList.add('d-none');
+        tableCasino.classList.remove('d-none');
+        tableCave.classList.add('d-none');
+    });
+
+    btnCave.addEventListener('click', () => {
+        tableGarden.classList.add('d-none');
+        tableCasino.classList.add('d-none');
+        tableCave.classList.remove('d-none');
+    });
+}
