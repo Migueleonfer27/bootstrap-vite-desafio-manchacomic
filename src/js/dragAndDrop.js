@@ -1,4 +1,4 @@
-import { updateToLocalStorage, getFromLocalStorage, saveToLocalStorage } from "./localStorage";
+import { updateToLocalStorage, getFromLocalStorage } from "./localStorage";
 
 export const dragAndDrop = () => {
     loadActivities();
@@ -20,42 +20,83 @@ export const dragAndDrop = () => {
     Array.from(tds).forEach(td => {
         td.addEventListener('dragover', (e) => {
             e.preventDefault();
-            td.classList.add('bg-secondary');
+            const tableId = td.closest('table').id;
+            const currentButtons = td.querySelectorAll('button[data-bs-toggle="modal"]').length;
+            
+            let limit = 0;
+            switch (tableId) {
+                case 'garden':
+                    limit = 5;
+                    break;
+                case 'casino':
+                    limit = 10; 
+                    break;
+                case 'cave':
+                    limit = 2; 
+                    break;
+                default:
+                    limit = 0; 
+            }
+
+            if (currentButtons >= limit) {
+                td.classList.add('bg-danger');
+            } else {
+                td.classList.add('bg-success');
+            }
         });
 
         td.addEventListener('dragleave', (e) => {
             e.preventDefault();
-            td.classList.remove('bg-secondary');
+            td.classList.remove('bg-success', 'bg-danger');
         });
 
         td.addEventListener('drop', (e) => {
             e.preventDefault();
-            td.classList.remove('bg-secondary');
+            td.classList.remove('bg-success', 'bg-danger');
             const buttonId = e.dataTransfer.getData('text/plain');
             const button = document.getElementById(buttonId);
 
             if (button) {
-                td.appendChild(button);
                 const activityId = buttonId.split('-')[1];
-                handleDrop(activityId, td);
+                handleDrop(activityId, td, button);
             }
         });
     });
 };
 
-const handleDrop = (activityId, td) => {
+const handleDrop = (activityId, td, button) => {
     const activities = getFromLocalStorage();
     const activity = activities.find(activity => activity._id === parseInt(activityId));
 
     if (activity) {
         const newHour = td.parentElement.classList[0];
         const newDay = td.classList[0];
-
-        if (activity._hour !== newHour || activity._day !== newDay) {
-            activity._hour = newHour;
-            activity._day = newDay;
+        const tableId = td.closest('table').id;
+        const currentButtons = td.querySelectorAll('button[data-bs-toggle="modal"]').length;
+        
+        let limit = 0;
+        switch (tableId) {
+            case 'garden':
+                limit = 5;
+                break;
+            case 'casino':
+                limit = 10;
+                break;
+            case 'cave':
+                limit = 2;
+                break;
+            default:
+                limit = 0;
         }
-        updateToLocalStorage(activity);
+
+        if (currentButtons < limit) {
+            if (activity._hour !== newHour || activity._day !== newDay) {
+                activity._hour = newHour;
+                activity._day = newDay;
+            }
+            td.appendChild(button);
+            updateToLocalStorage(activity);
+        }
     }
 };
 
@@ -90,11 +131,6 @@ const openModalWithActivity = (activityId) => {
                 <p>Día: ${activity._day}</p>
                 <p>Ubicación: ${activity._location}</p>
             `;
-        } else {
-            console.error("No se encontraron los elementos del modal para la actividad con id:", activityId);
         }
-    } else {
-        console.error("Actividad no encontrada en localStorage con id:", activityId);
     }
 };
-
