@@ -104,20 +104,33 @@ export const submitFormActivitie = (event) => {
 
         if (thereIsEspace(activities, newActivitie)) {
             saveToLocalStorage(newActivitie);
-            document.querySelector('#formSuccess').classList.remove('d-none');
+            const successMessage = document.querySelector('#formSuccess');
+            successMessage.classList.remove('d-none');
             document.querySelector('#formAlert').classList.add('d-none');
+            setTimeout(() => {
+                successMessage.classList.add('d-none');
+            }, 2000);
             insertActivitie(getFromLocalStorage());
             dragAndDrop();
         } else {
-            document.querySelector('#formAlert').classList.remove('d-none');
+            const alertMessage = document.querySelector('#formAlert');
+            alertMessage.classList.remove('d-none');
             document.querySelector('#formSuccess').classList.add('d-none');
-            document.querySelector('#formAlert').textContent = 'No hay espacio disponible para esta actividad.';
+            alertMessage.textContent = 'No hay espacio disponible para esta actividad.';
+            setTimeout(() => {
+                alertMessage.classList.add('d-none');
+            }, 2000);
         }
     } else {
-        document.querySelector('#formAlert').classList.remove('d-none');
+        const alertMessage = document.querySelector('#formAlert');
+        alertMessage.classList.remove('d-none');
         document.querySelector('#formSuccess').classList.add('d-none');
+        setTimeout(() => {
+            alertMessage.classList.add('d-none');
+        }, 2000);
     }
 };
+
 
 export const deleteInfoForm = () => {
     const inputs = document.querySelectorAll('#form input, #form select');
