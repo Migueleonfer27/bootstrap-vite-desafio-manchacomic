@@ -82,9 +82,15 @@ const handleDrop = (activityId, td, button) => {
                 break;
             case 'casino':
                 limit = 10;
+                if (newDay == '2025-10-03' && parseInt(newHour) < 17) {
+                    return;
+                }
                 break;
             case 'cave':
                 limit = 2;
+                if (newDay == '2025-10-03' && parseInt(newHour) < 17) {
+                    return;
+                }
                 break;
             default:
                 limit = 0;
