@@ -30,6 +30,7 @@ export const insertActivitie = (activities) => {
                                 }
                                 button.textContent = `${activitie._type}`;
                                 button.draggable = true;
+                                button.classList.add('btn-person');
                                 button.setAttribute('id', `btn-${activitie._id}`);
                                 const modal = document.createElement('div');
                                 modal.classList.add('modal', 'fade');
@@ -50,7 +51,7 @@ export const insertActivitie = (activities) => {
                                                 <p>Día: ${activitie._day}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn bg-primary-person text-light" id="delete-${activitie._id}">Eliminar</button>
+                                                <button type="button" class="btn bg-primary-person btn-person text-light" aria-label="Close" data-bs-dismiss="modal" id="delete-${activitie._id}">Eliminar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -58,16 +59,7 @@ export const insertActivitie = (activities) => {
                                 const deleteButton = modal.querySelector(`#delete-${activitie._id}`);
                                 deleteButton.addEventListener('click', () => {
                                     deleteActivitie(activitie._id);
-                                    deleteButton.textContent = 'Actividad eliminada correctamente';
-                                    deleteButton.classList.add('bg-success');
-                                    setInterval(() => {
-                                        deleteButton.textContent = 'Eliminar';
-                                        deleteButton.classList.remove('bg-success');
-                                    }, 1500);
-                                    const modalElement = new bootstrap.Modal(modal);
-                                    modalElement.hide();
-                                    document.body.removeChild(modal);
-                                    document.querySelector(`#btn-${activitie._id}`).remove();
+
                                 });
                                 day.appendChild(button);
                                 document.body.appendChild(modal);
