@@ -1,6 +1,7 @@
 export class Activitie {
-    constructor(id, type, location, day, hour) {
+    constructor(id, title, type, location, day, hour) {
         this._id = id;
+        this.title = title;
         this._type = type;
         this._location = location;
         this._day = day;
@@ -13,6 +14,14 @@ export class Activitie {
 
     set type(newId) {
         this._type = newId;
+    }
+
+    get title() {
+        return this._id;
+    }
+
+    set title(newTitle) {
+        this._title = newTitle;
     }
 
     get type() {

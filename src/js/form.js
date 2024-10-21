@@ -31,6 +31,15 @@ export const validateType = () => {
     return valid;
 };
 
+export const validateTitle = () => {
+    const title = document.querySelector('#activitie-title');
+    let valid = title.value.length > 0;
+
+    changeStyle(title, valid);
+
+    return valid;
+};
+
 export const validateLocation = () => {
     const location = document.querySelector('#ubication-pick');
     const type = document.querySelector('#activitie-pick');
@@ -93,31 +102,45 @@ export const addInputValidation = (selector, validationFunction) => {
 export const submitFormActivitie = (event) => {
     event.preventDefault();
 
-    if (validateType() && validateLocation() && validateDate()) {
+    if (validateTitle() && validateType() && validateLocation() && validateDate()) {
         const activities = getFromLocalStorage();
         const id = activities.length === 0 ? 1 : activities[activities.length - 1]._id + 1;
+        const title = document.querySelector('#activitie-title').value;
         const type = document.querySelector('#activitie-pick').value;
         const location = document.querySelector('#ubication-pick').value;
         const datetimeValue = document.querySelector('#activitie-date').value;
         const [day, hour] = datetimeValue.split('T');
-        const newActivitie = new Activitie(id, type, location, day, hour);
+        const newActivitie = new Activitie(id, title, type, location, day, hour);
 
         if (thereIsEspace(activities, newActivitie)) {
             saveToLocalStorage(newActivitie);
-            document.querySelector('#formSuccess').classList.remove('d-none');
+            const successMessage = document.querySelector('#formSuccess');
+            successMessage.classList.remove('d-none');
             document.querySelector('#formAlert').classList.add('d-none');
+            setTimeout(() => {
+                successMessage.classList.add('d-none');
+            }, 2000);
             insertActivitie(getFromLocalStorage());
             dragAndDrop();
         } else {
-            document.querySelector('#formAlert').classList.remove('d-none');
+            const alertMessage = document.querySelector('#formAlert');
+            alertMessage.classList.remove('d-none');
             document.querySelector('#formSuccess').classList.add('d-none');
-            document.querySelector('#formAlert').textContent = 'No hay espacio disponible para esta actividad.';
+            alertMessage.textContent = 'No hay espacio disponible para esta actividad.';
+            setTimeout(() => {
+                alertMessage.classList.add('d-none');
+            }, 2000);
         }
     } else {
-        document.querySelector('#formAlert').classList.remove('d-none');
+        const alertMessage = document.querySelector('#formAlert');
+        alertMessage.classList.remove('d-none');
         document.querySelector('#formSuccess').classList.add('d-none');
+        setTimeout(() => {
+            alertMessage.classList.add('d-none');
+        }, 2000);
     }
 };
+
 
 export const deleteInfoForm = () => {
     const inputs = document.querySelectorAll('#form input, #form select');

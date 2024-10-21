@@ -2,8 +2,9 @@
 
 :root {
     --primary-color: #85275C;
-    --secondary-color: #000000;
-    --ternary-color: #FFFFFF;
+    --secondary-color: #85275ccf;
+    --ternary-color: #85275c50;
+    --cuaternary-color: #46ff08;
 }
 
 [alt='title'] {
@@ -18,13 +19,17 @@
     color: var(--primary-color) !important;
 }
 
-.btn-hov-person:hover {
+.btn-person:hover {
     transition: 0.3s;
     background-color: var(--secondary-color) !important;
 }
 
-.btn-act-person:active {
+.btn-person:active {
     transition: 0s !important;
     background-color: var(--ternary-color) !important;
     color: var(--primary-color) !important;
+}
+
+.bg-success-person {
+    background-color: var(--cuaternary-color) !important;
 }
