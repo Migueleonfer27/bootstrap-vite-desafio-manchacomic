@@ -28,7 +28,7 @@ export const insertActivitie = (activities) => {
                                 } else {
                                     button.setAttribute('data-bs-target', `#modal-${activitie._id}`);
                                 }
-                                button.textContent = `${activitie._type}`;
+                                button.textContent = `${activitie._title}`;
                                 button.draggable = true;
                                 button.classList.add('btn-person');
                                 button.setAttribute('id', `btn-${activitie._id}`);

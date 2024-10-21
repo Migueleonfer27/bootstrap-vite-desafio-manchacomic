@@ -41,12 +41,16 @@
       <fieldset>
         <legend class="visually-hidden">Información del Registro</legend>
         <div class="mb-3">
-          <label for="activitie-date" class="form-label">Fecha</label>
+          <label for="activitie-title" class="form-label">Título de la actividad</label>
+          <input id="activitie-title" type="text" class="form-control" maxlength="30" required aria-required="true" placeholder="Insertar titulo de la actividad...">
+        </div>
+        <div class="mb-3">
+          <label for="activitie-date" class="form-label">Fecha/Hora</label>
           <input id="activitie-date" type="datetime-local" class="form-control" required aria-required="true"
             min="2025-10-03T17:00" max="2025-10-05T23:00">
         </div>
         <div class="mb-3">
-          <label for="activitie-pick" class="form-label">Actividades</label>
+          <label for="activitie-pick" class="form-label">Tipo de actividad</label>
           <select id="activitie-pick" class="form-select" required aria-required="true">
             <option value="" disabled selected>Seleccionar actividad</option>
             <option value="talks">Charlas</option>

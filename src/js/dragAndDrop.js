@@ -133,13 +133,14 @@ const openModalWithActivity = (activityId) => {
 
         if (modalHeader && modalBody) {
             modalHeader.innerHTML = `
-                <h5 class="modal-title">${activity._type}</h5>
+                <h5 class="modal-title fs-2 text-primary-person">${activity._id}. ${activity._title}</h5>
                 <button type="button" class="btn-close bg-primary-person" data-bs-dismiss="modal" aria-label="Close"></button>
             `;
             modalBody.innerHTML = `
-                <p>Hora: ${activity._hour}</p>
-                <p>Día: ${activity._day}</p>
-                <p>Ubicación: ${activity._location}</p>
+                <p><span class="fw-bold text-primary-person">Tipo</span>: ${activity._type}.</p>
+                <p><span class="fw-bold text-primary-person">Hora</span>: ${activity._hour}.</p>
+                <p><span class="fw-bold text-primary-person">Día</span>: ${activity._day}.</p>
+                <p><span class="fw-bold text-primary-person">Ubicación</span>: ${activity._location}.</p>
             `;
         }
     }
