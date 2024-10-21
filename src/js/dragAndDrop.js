@@ -39,18 +39,18 @@ export const dragAndDrop = () => {
             }
 
             if (!td.classList.contains('bg-secondary')) {
-                currentButtons >= limit ? td.classList.add('bg-danger') : td.classList.add('bg-success')
+                currentButtons >= limit ? td.classList.add('bg-danger') : td.classList.add('bg-success-person')
             }
         });
 
         td.addEventListener('dragleave', (e) => {
             e.preventDefault();
-            td.classList.remove('bg-success', 'bg-danger');
+            td.classList.remove('bg-success-person', 'bg-danger');
         });
 
         td.addEventListener('drop', (e) => {
             e.preventDefault();
-            td.classList.remove('bg-success', 'bg-danger');
+            td.classList.remove('bg-success-person', 'bg-danger');
             const buttonId = e.dataTransfer.getData('text/plain');
             const button = document.getElementById(buttonId);
 
