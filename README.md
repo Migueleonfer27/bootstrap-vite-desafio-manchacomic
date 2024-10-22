@@ -1,8 +1,3 @@
-# bootstrap-vite-desafio-manchacomic
-Desafío 1 interfaces y cliente Manchacómic
-
----
-
 # Manchacomic Project
 
 Este es un proyecto desarrollado con [Vite](https://vitejs.dev/) basado en el tema "manchacomic". El proyecto permite explorar el universo de los cómics relacionados con esta temática, proporcionando una interfaz interactiva y moderna.
@@ -20,11 +15,11 @@ Para comenzar a trabajar con este proyecto, sigue los siguientes pasos:
 
 1. Clona este repositorio en tu máquina local.
    ```bash
-   git clone https://github.com/tu_usuario/manchacomic.git
+   git clone https://github.com/Migueleonfer27/bootstrap-vite-desafio-manchacomic.git
    ```
 2. Navega a la carpeta del proyecto.
    ```bash
-   cd manchacomic
+   cd bootstrap-vite-desafio-manchacomic
    ```
 3. Instala las dependencias del proyecto.
    ```bash
@@ -39,24 +34,13 @@ Para ejecutar el proyecto en un servidor de desarrollo, usa el siguiente comando
 npm run dev
 ```
 
-Esto levantará un servidor local que recargará automáticamente la página cuando hagas cambios en el código. Por defecto, el proyecto estará disponible en la dirección: `http://localhost:3000/`.
+Esto levantará un servidor local que recargará automáticamente la página cuando hagas cambios en el código. Por defecto, el proyecto estará disponible en la dirección: `http://localhost:5173/`.
 
 ## Estructura del proyecto
 
-- **src/**: Contiene los archivos fuente del proyecto (componentes, estilos, etc.).
-- **public/**: Recursos estáticos como imágenes y fuentes.
+- **src/**: Contiene los archivos fuente del proyecto (componentes, estilos, imágenes, etc.).
 - **index.html**: El archivo HTML principal.
 - **vite.config.js**: Archivo de configuración de Vite.
-
-## Despliegue
-
-Para desplegar el proyecto, genera una versión optimizada para producción ejecutando:
-
-```bash
-npm run build
-```
-
-Los archivos resultantes estarán en la carpeta `dist/`.
 
 ## Contribuir
 
