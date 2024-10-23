@@ -5,6 +5,11 @@
     --secondary-color: #85275ccf;
     --ternary-color: #85275c50;
     --cuaternary-color: #46ff08;
+    --primary-font: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+* {
+    font-family: var(--primary-font);
 }
 
 [alt='title'] {

@@ -1,4 +1,5 @@
 import { updateToLocalStorage, getFromLocalStorage } from "./localStorage";
+import { translate } from "./tables";
 
 export const dragAndDrop = () => {
     loadActivities();
@@ -137,12 +138,11 @@ const openModalWithActivity = (activityId) => {
                 <button type="button" class="btn-close bg-primary-person" data-bs-dismiss="modal" aria-label="Close"></button>
             `;
             modalBody.innerHTML = `
-                <p><span class="fw-bold text-primary-person">Tipo</span>: ${activity._type}.</p>
+                <p><span class="fw-bold text-primary-person">Tipo</span>: ${translate(activity._type)}.</p>
                 <p><span class="fw-bold text-primary-person">Hora</span>: ${activity._hour}.</p>
                 <p><span class="fw-bold text-primary-person">Día</span>: ${activity._day}.</p>
-                <p><span class="fw-bold text-primary-person">Ubicación</span>: ${activity._location}.</p>
+                <p><span class="fw-bold text-primary-person">Ubicación</span>: ${translate(activity._location)}.</p>
             `;
         }
     }
 };
-
