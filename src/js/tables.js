@@ -112,3 +112,47 @@ export const hideTable = () => {
         tableCave.classList.remove('d-none');
     });
 }
+
+export const translate = (atribute) => {
+    let translate = atribute;
+
+    switch (atribute) {
+        case 'talks':
+            translate = "Charlas"
+            break;
+
+        case 'workshops':
+            translate = "Talleres"
+            break;
+
+        case 'table-games':
+            translate = "Juegos de mesa"
+            break;
+
+        case 'table-games':
+            translate = "Juegos de mesa"
+            break; 
+        
+        case 'wargames':
+            translate = "Wargames"
+            break;
+
+        case 'rol-scape-room':
+            translate = "Rol-scape-room"
+            break;
+
+        case 'gardens':
+            translate = "Jardines"
+            break;
+
+        case 'casino':
+            translate = "Casino"
+            break;
+
+        case 'cave':
+            translate = "Cueva"
+            break;
+    }
+
+    return translate;
+}
